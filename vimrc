@@ -9,7 +9,8 @@ set tabstop=4  "How much space Vim gives to a tab
 set number  "Enables line numbering
 set smarttab  "Improves tabbing
 set shiftwidth=4  "Assists code formatting
-colorscheme darkblue  "Changes the color scheme. Change this to your liking. Lookin /usr/share/vim/vim61/colors/ for options.
+set background=dark "Background theme
+colorscheme solarized  "Changes the color scheme. Change this to your liking. Lookin /usr/share/vim/vim61/colors/ for options.
 "setlocal spell  "Enables spell checking (CURRENTLY DISABLED because it's kinda annoying). Make sure to uncomment the next line if you use this.
 "set spellfile=~/.vimwords.add  "The location of the spellcheck dictionary. Uncomment this line if you uncomment the previous line.
 set foldmethod=manual  "Lets you hide sections of code
