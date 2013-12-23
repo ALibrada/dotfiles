@@ -27,3 +27,10 @@ set wcm=<C-Z>
 map <F4> :emenu <C-Z>
 "--- End sweet menu
 map ,n YPi#<esc> "Duplicate line, comment original
+" tab navigation like firefox
+nnoremap <C-S-tab> :tabprevious<CR>
+nnoremap <C-tab>   :tabnext<CR>
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+inoremap <C-tab>   <Esc>:tabnext<CR>i
+inoremap <C-t>     <Esc>:tabnew<CR>
