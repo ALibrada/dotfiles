@@ -29,3 +29,14 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
+
+# Install solarized terminal theme if not already installed.
+if [ -d "./gnome-terminal-colors-solarized" ]; then
+    echo "Solarized Terminal theme installed"
+else
+    echo "Solarized Terminal theme not installed"
+    git clone git://github.com/sigurdga/gnome-terminal-colors-solarized.git
+    cd gnome-terminal-colors-solarized
+    ./solarize
+    cd
+fi
