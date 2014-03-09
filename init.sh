@@ -3,6 +3,25 @@
 # .make.sh
 # This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
 ############################
+# Install CURL
+sudo apt-get install curl
+
+# Install VIM
+sudo apt-get install vim
+
+# Install pathoget for VIM
+mkdir -p ~/.vim/autoload ~/.vim/bundle 
+curl 'www.vim.org/scripts/download_script.php?src_id=19375' > ~/.vim/autoload/pathogen.vim
+
+# Install VIM solarized theme if not installed
+if [ -d "../.vim/bundle/vim-colors-solarized" ]; then
+    echo "Solarized VIM theme installed"
+else
+    echo "Solarized VIM theme not installed"
+    mkdir -p ~/.vim/bundle
+    git clone git://github.com/altercation/vim-colors-solarized.git
+    mv vim-colors-solarized ~/.vim/bundle/
+fi
 
 ########## Variables
 
@@ -40,3 +59,5 @@ else
     ./solarize
     cd
 fi
+
+

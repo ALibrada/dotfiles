@@ -1,3 +1,4 @@
+call pathogen#infect()
 set nocompatible "This fixes the problem where arrow keys do not function properly on some systems.
 syntax on  "Enables syntax highlighting for programming languages
 set mouse=a  "Allows you to click around the text editor with your mouse to move the cursor
