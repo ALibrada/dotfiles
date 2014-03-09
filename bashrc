@@ -116,9 +116,14 @@ fi
 # Add color to Bash prompt symbols
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
+# Java DK HOME
+JAVA_HOME=$HOME/Java/jdk
+export JAVA_HOME
+export PATH="$JAVA_HOME/bin:$PATH"
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
 ### Added by antoniolibrada for virutalenvwrapper 19/12/2013
 source $HOME/.local/bin/virtualenvwrapper.sh
 export WORKON_HOME=$HOME/Envs
+

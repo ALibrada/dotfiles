@@ -10,8 +10,13 @@ sudo apt-get install curl
 sudo apt-get install vim
 
 # Install pathoget for VIM
-mkdir -p ~/.vim/autoload ~/.vim/bundle 
-curl 'www.vim.org/scripts/download_script.php?src_id=19375' > ~/.vim/autoload/pathogen.vim
+if [ -d "../.vim/autoload" ]; then
+    echo "Pathogen Installed"
+else
+    echo "Pathogen not Installed"
+    mkdir -p ~/.vim/autoload ~/.vim/bundle 
+    curl 'www.vim.org/scripts/download_script.php?src_id=19375' > ~/.vim/autoload/pathogen.vim
+fi
 
 # Install VIM solarized theme if not installed
 if [ -d "../.vim/bundle/vim-colors-solarized" ]; then
