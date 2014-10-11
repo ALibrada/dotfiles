@@ -14,7 +14,7 @@ if [ -d "../.vim/autoload" ]; then
     echo "Pathogen Installed"
 else
     echo "Pathogen not Installed"
-    mkdir -p ~/.vim/autoload ~/.vim/bundle 
+    mkdir -p ~/.vim/autoload ~/.vim/bundle
     curl 'www.vim.org/scripts/download_script.php?src_id=19375' > ~/.vim/autoload/pathogen.vim
 fi
 
@@ -46,23 +46,10 @@ echo "Changing to the $dir directory"
 cd $dir
 echo "...done"
 
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
+# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
 for file in $files; do
     echo "Moving any existing dotfiles from ~ to $olddir"
     mv ~/.$file ~/dotfiles_old/
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
-
-# Install solarized terminal theme if not already installed.
-if [ -d "./gnome-terminal-colors-solarized" ]; then
-    echo "Solarized Terminal theme installed"
-else
-    echo "Solarized Terminal theme not installed"
-    git clone git://github.com/sigurdga/gnome-terminal-colors-solarized.git
-    cd gnome-terminal-colors-solarized
-    ./solarize
-    cd
-fi
-
-
