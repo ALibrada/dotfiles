@@ -3,3 +3,5 @@
 	email = antoniolibrada@gmail.com
 [color]
 	ui = true
+[core]
+	autocrlf = input

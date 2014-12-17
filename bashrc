@@ -116,14 +116,28 @@ fi
 # Add color to Bash prompt symbols
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
-# Java DK HOME
-JAVA_HOME=$HOME/Java/jdk
+# Java development directory
+DEV_HOME=$HOME/dev
+
+# Java Development Kit HOME
+JAVA8_HOME=$DEV_HOME/java/jdk1.8.0_25
+JAVA7_HOME=$DEV_HOME/java/jdk1.7.0_71
+JAVA_HOME=$JAVA8_HOME
+
 export JAVA_HOME
 export PATH="$JAVA_HOME/bin:$PATH"
+
+MAVEN_HOME=$DEV_HOME/mvn/bin
+export MAVEN_HOME
+export PATH="$MAVEN_HOME:$PATH"
+
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
 ### Added by antoniolibrada for virutalenvwrapper 19/12/2013
-source $HOME/.local/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper.sh
 export WORKON_HOME=$HOME/Envs
 
+### Maven loader ###
+export NVM_DIR="/home/antoniolibrada/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
