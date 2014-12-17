@@ -116,6 +116,11 @@ fi
 # Add color to Bash prompt symbols
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
+# Add scripts folder to PATH
+SCRIPTS=$HOME/scripts
+export SCRIPTS
+export PATH="$SCRIPTS:$PATH"
+
 # Java development directory
 DEV_HOME=$HOME/dev
 

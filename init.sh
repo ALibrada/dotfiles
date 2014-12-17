@@ -64,3 +64,6 @@ else
     ./install.sh
     cd
 fi
+
+# Create scripts folder
+mkdir -p $HOME/scripts
