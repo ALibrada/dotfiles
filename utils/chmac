@@ -1,0 +1,58 @@
+#!/bin/bash
+# Sources:
+# - Main Script:
+#       http://www.2600.com/code/252/mac-address-changer/mac-address-changer.sh.txt
+# - Initial MAC Configuration:
+#       http://community.spiceworks.com/scripts/show/770-change-your-mac-address
+# - Random MAC generator:
+#       http://www.commandlinefu.com/commands/view/745/generat-a-random-mac-address
+# This script allows you to change your MAC address. Proper
+# syntax is as follows:
+
+# change-mac home <interface>       # Changes MAC Address to Original
+# change-mac <MAC> <interface>      # Changes MAC Address to One Specified
+# change-mac random <interface>     # Changes MAC Address Randomly
+
+# Default interface
+iface="wlan0"
+
+if [ $# -eq 2 ]; then
+    iface=$2
+fi
+
+file=$HOME/.mac.conf
+if [ ! -f $file ] ; then
+    echo "File $file Does Not Exist"
+    echo "Creating file..."
+    omac=$(ifconfig $iface | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}')
+    echo $omac > $file
+    echo "File created with MAC: $omac"
+else
+    omac=$(cat $file)
+fi
+
+if [ "$1" == home ]; then
+    sudo ifconfig $iface down
+    sudo ifconfig $iface hw ether $omac
+    sudo ifconfig $iface up
+    echo "Original MAC Address Restored."
+    exit 0
+elif [ "$1" == random ]; then
+    rmac=02:`(date; cat /proc/interrupts) | md5sum | sed -r 's/^(.{10}).*$/\1/; s/([0-9a-f]{2})/\1:/g; s/:$//;'`
+    sudo ifconfig $iface down
+    sudo ifconfig $iface hw ether $rmac
+    sudo ifconfig $iface up
+    echo "MAC Address Randomly Changed To $rmac"
+    exit 1
+elif [ "$1" ]; then
+    sudo ifconfig eth0 down
+    sudo ifconfig eth0 hw ether $1
+    sudo ifconfig eth0 up
+    echo "MAC Address Changed To $1."
+    exit 2
+else
+    echo "change-mac home (<interface>)      # Changes MAC Address to Original"
+    echo "change-mac <MAC> (<interface>)     # Changes MAC Address to One Specified"
+    echo "change-mac random (<interface>)    # Changes MAC Address Randomly"
+    exit 3
+fi
