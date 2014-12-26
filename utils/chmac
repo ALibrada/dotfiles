@@ -9,9 +9,9 @@
 # This script allows you to change your MAC address. Proper
 # syntax is as follows:
 
-# change-mac home <interface>       # Changes MAC Address to Original
-# change-mac <MAC> <interface>      # Changes MAC Address to One Specified
-# change-mac random <interface>     # Changes MAC Address Randomly
+# chmac home <interface>       # Changes MAC Address to Original
+# chmac <MAC> <interface>      # Changes MAC Address to One Specified
+# chmac random <interface>     # Changes MAC Address Randomly
 
 # Default interface
 iface="wlan0"
@@ -51,8 +51,8 @@ elif [ "$1" ]; then
     echo "MAC Address Changed To $1."
     exit 2
 else
-    echo "change-mac home (<interface>)      # Changes MAC Address to Original"
-    echo "change-mac <MAC> (<interface>)     # Changes MAC Address to One Specified"
-    echo "change-mac random (<interface>)    # Changes MAC Address Randomly"
+    echo "chmac home (<interface>)      # Changes MAC Address to Original"
+    echo "chmac <MAC> (<interface>)     # Changes MAC Address to One Specified"
+    echo "chmac random (<interface>)    # Changes MAC Address Randomly"
     exit 3
 fi
