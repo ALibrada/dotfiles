@@ -38,7 +38,8 @@ if [ "$1" == home ]; then
     echo "Original MAC Address Restored."
     exit 0
 elif [ "$1" == random ]; then
-    rmac=02:`(date; cat /proc/interrupts) | md5sum | sed -r 's/^(.{10}).*$/\1/; s/([0-9a-f]{2})/\1:/g; s/:$//;'`
+    # First bit explanation: http://packetsdropped.wordpress.com/2011/01/13/mac-address-universally-or-locally-administered-bit-and-individualgroup-bit/
+    rmac=f8:`(date; cat /proc/interrupts) | md5sum | sed -r 's/^(.{10}).*$/\1/; s/([0-9a-f]{2})/\1:/g; s/:$//;'`
     sudo ifconfig $iface down
     sudo ifconfig $iface hw ether $rmac
     sudo ifconfig $iface up
